@@ -173,10 +173,10 @@ CREATE TABLE NUT_DATA (
 CREATE TABLE WEIGHT (
 	NDB_No			CHAR(5)			NOT NULL,	-- 5-digit Nutrient Databank number that uniquely identifies a food item
 	Seq				CHAR(2)			NOT NULL,	-- sequence number
-	Amount			DECIMAL(5,3)	NOT NULL,	-- unit modifier (e.g. 1 in "1 cup")
+	Amount			DECIMAL(6,3)	NOT NULL,	-- unit modifier (e.g. 1 in "1 cup") ***NOTE: spec is wrong, there is 3 sig digs data point and 5-3=2
 	Msre_Desc		CHAR(84)		NOT NULL,	-- description (e.g. cup, diced, 1" pieces)
 	Gm_Wgt			DECIMAL(7,1)	NOT NULL,	-- gram weight
-	Num_Data_Pts	Decimal(3,0),				-- number of data points
+	Num_Data_Pts	Decimal(4,0),				-- number of data points ***NOTE: spec is wrong, there is a 4 digit data point
 	Std_Dev			Decimal(7,3),				-- standard deviation
 	CONSTRAINT WEIGHT_PK PRIMARY KEY(NDB_No,Seq),
 	CONSTRAINT WEIGHT_NDBNO_FK FOREIGN KEY(NDB_No) REFERENCES FOOD_DES(NDB_No)
